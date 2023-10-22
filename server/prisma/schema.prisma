@@ -9,3 +9,63 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model question {
+  id Int @id @unique @default(autoincrement()) 
+  theme String @db.VarChar(255)
+  enunciation String @db.VarChar(2000)
+  alternative_list String
+  correct_alternative String
+
+  id_test Int
+  tests test @relation(fields: [id_test], references: [id])
+  
+  quest simulated[]
+}
+
+model test{
+  id Int @id @unique @default(autoincrement())
+  name String
+  year DateTime 
+
+  simulate simulated[]
+  questions question[]
+}
+
+model simulated{
+  id_simulated Int @id @unique @default(autoincrement())
+  created_at DateTime @default(now())
+  question_simulated String
+
+  id_tests Int
+  ids_tests test @relation(fields: [id_tests], references: [id])
+
+  id_questions Int
+  questions_ids question @relation(fields: [id_questions], references: [id])
+
+  id_user Int
+  id_users user @relation(fields: [id_user], references: [id])
+
+  performaces performace[]
+}
+
+model user{
+  id Int @id @unique @default(autoincrement())
+  name String
+  email String
+  password String @db.VarChar(30)
+
+  simulate simulated[]
+  performaces performace[]
+}
+
+model performace {
+  id Int @id @unique @default(autoincrement())
+  score Float
+
+  id_simulate Int
+  id_simulates simulated @relation(fields: [id_simulate], references: [id_simulated])
+
+  user_id Int
+  user_ids user @relation(fields: [user_id], references: [id])
+}
