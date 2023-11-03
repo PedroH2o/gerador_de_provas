@@ -11,7 +11,7 @@ app.get('/', async function handler (request, reply) {
 
 // Run the server!
 try {
-  await app.listen({ port: 3000 }).then(() => {
+    app.listen({ port: 3000 }).then(() => {
     console.log('HTTP Server running!')
 })
 } catch (err) {
