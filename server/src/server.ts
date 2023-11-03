@@ -1,20 +1,19 @@
-// Import the framework and instantiate it
-import Fastify from 'fastify'
+import fastify from 'fastify'
 
+const server = fastify()
 
-const app = Fastify()
-
-// Declare a route
-app.get('/', async function handler (request, reply) {
-  return 'hello world'
+server.get('/ping', async (request, reply) => {
+  return 'pong\n'
 })
 
-// Run the server!
-try {
-  await app.listen({ port: 3000 }).then(() => {
-    console.log('HTTP Server running!')
+server.listen({ port: 8080 }, (err, address) => {
+  if (err) {
+    console.error(err)
+    process.exit(1)
+  }
+  console.log(`Server listening at ${address}`)
 })
-} catch (err) {
-  app.log.error(err)
-  process.exit(1)
-}
+
+//npx tsc
+
+//node ./src/server.js
