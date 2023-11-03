@@ -1,2 +1,2 @@
 # @name base-url
-GET http://localhost:3000/
+GET http://localhost:8080/ping
