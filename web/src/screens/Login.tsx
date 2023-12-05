@@ -1,8 +1,8 @@
 import { FacebookLogo, GoogleLogo } from "@phosphor-icons/react";
 import { AutoLogin } from "../componnents/AutoLogin";
-import { Button } from "../componnents/Button";
-import * as Form from '@radix-ui/react-form';
 import { Link } from "react-router-dom";
+import { FormComponent } from "../componnents/Form";
+import { Control, Field, Label, Message } from "@radix-ui/react-form";
 
 export function Login() {
     return(
@@ -27,57 +27,54 @@ export function Login() {
                     </AutoLogin>
                 </div>
 
-                <Form.Root className="w-full flex flex-col gap-3">
-                <Form.Field name="UserOrEmail" className="w-full flex flex-col gap-2">
+                <FormComponent>
+                    <Field name="UserOrEmail" className="w-full flex flex-col gap-2">
+                        <div className="flex items-baseline justify-between">
+                        <Label htmlFor="user" className="text-base sm:text-xl text-slate-900 font-semibold">
+                            Usuário ou email:
+                        </Label>
+                        <Message className="text-xs sm:text-sm text-slate-900 opacity-[0.8]" match="valueMissing">
+                            Digite seu email
+                        </Message>
+                        <Message className="text-xs sm:text-sm text-slate-900 opacity-[0.8]" match="typeMismatch">
+                            Seu email está errado, confirá a escrita
+                        </Message>
+                        </div>
+
+                        <Control asChild>
+
+                            <input 
+                            id="user" 
+                            type="text"  
+                            placeholder="jhodoe / jhodoe@exemple.com" 
+                            className="w-full p-2 sm:p-4 rounded-lg border border-slate-800 placeholder:text-slate-500 placeholder:text-base sm:placeholder:text-xl"
+                            required
+                            />
+
+                        </Control>
+                    </Field>
+
+                    <Field name="Password" className="w-full flex flex-col gap-2">
                     <div className="flex items-baseline justify-between">
-                    <Form.Label htmlFor="user" className="text-base sm:text-xl text-slate-900 font-semibold">
-                        Usuário ou email:
-                    </Form.Label>
-                    <Form.Message className="text-xs sm:text-sm text-slate-900 opacity-[0.8]" match="valueMissing">
-                        Digite seu email
-                    </Form.Message>
-                    <Form.Message className="text-xs sm:text-sm text-slate-900 opacity-[0.8]" match="typeMismatch">
-                        Seu email está errado, confirá a escrita
-                    </Form.Message>
-                    </div>
-
-                    <Form.Control asChild>
-
-                        <input 
-                        id="user" 
-                        type="text"  
-                        placeholder="jhodoe / jhodoe@exemple.com" 
-                        className="w-full p-2 sm:p-4 rounded-lg border border-slate-800 placeholder:text-slate-500 placeholder:text-base sm:placeholder:text-xl"
-                        required
-                        />
-
-                    </Form.Control>
-                </Form.Field>
-
-                <Form.Field name="Password" className="w-full flex flex-col gap-2">
-                    <div className="flex items-baseline justify-between">
-                    <Form.Label htmlFor="user" className="text-base sm:text-xl text-slate-900 font-semibold">
+                    <Label htmlFor="user" className="text-base sm:text-xl text-slate-900 font-semibold">
                         Senha:
-                    </Form.Label>
-                    <Form.Message className="text-xs sm:text-sm text-slate-900 opacity-[0.8]" match="valueMissing">
+                    </Label>
+                    <Message className="text-xs sm:text-sm text-slate-900 opacity-[0.8]" match="valueMissing">
                         Digite sua senha
-                    </Form.Message>
+                    </Message>
                     </div>
 
-                    <Form.Control asChild>
+                    <Control asChild>
                     <input 
                         id="password" 
                         type="password" 
                         placeholder="********" 
                         className="w-full p-2 sm:p-4 rounded-lg border border-slate-800 placeholder:text-slate-500 placeholder:text-base sm:placeholder:text-xl"
                     />
-                    </Form.Control>
-                </Form.Field>
+                    </Control>
+                </Field>
 
-                <Form.Submit>
-                    <Button type="submit">Enviar</Button>
-                </Form.Submit>
-                </Form.Root>
+                </FormComponent>
 
                 <span className="w-full text-base sm:text-xl text-slate-900 text-center font-medium">Você ainda não tem uma conta? 
                     <br />
