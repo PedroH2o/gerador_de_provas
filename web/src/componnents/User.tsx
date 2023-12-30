@@ -27,7 +27,7 @@ export function User() {
 
     }
     return (
-        <figure className="w-12 h-12 lg:w-[70px] lg:h-[70px] p-[2px] bg-green-400 rounded-full flex items-center justify-center overflow-hidden">
+        <figure className="w-12 h-12 lg:w-[70px] lg:h-[70px] p-[2px] bg-blue-800/60 rounded-full flex items-center justify-center overflow-hidden">
             <img 
                 src={ user?.picture.large} 
                 alt={`usuário ${user?.name.first}`}  

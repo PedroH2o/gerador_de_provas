@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.14",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-form": "^0.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "clsx": "^2.0.0",
     "react": "^18.2.0",
+    "react-confetti-explosion": "^2.1.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.19.0"
   },

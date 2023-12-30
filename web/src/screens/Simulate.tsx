@@ -2,8 +2,13 @@ import * as Form from "@radix-ui/react-form";
 import { Button } from "../componnents/Button";
 import { Timer } from "../componnents/Timer";
 import { ArrowLeft } from "@phosphor-icons/react";
+import { Report } from "../section/Report";
+import { useNavigate } from "react-router-dom";
 
 export function Simulate() {
+
+    const navigate = useNavigate()
+
     return (
         <div className="w-full sm:max-w-[60%] sm:mx-auto p-3 flex flex-col gap-4 sm:gap-5 justify-center items-center">
             <Timer />
@@ -95,17 +100,22 @@ export function Simulate() {
                 <div className=" w-full flex justify-between mt-4">
                     <div className="w-fit ">
                         <Button asChild>
-                            <a href=""><ArrowLeft size={16}/>voltar</a>
+                            <a href="" className="flex items-center justify-center"><ArrowLeft size={16}/></a>
                         </Button>
                     </div>
 
                     <div className="w-fit ">
-                        <Button variant>Reportar</Button>
+                        <Report/>
                     </div>
                     
                     <Form.Submit asChild>
                         <div className="w-fit ">
-                            <Button type="submit">Enviar</Button>
+                            <Button type="submit" onClick={(e) => {
+                                e.preventDefault()
+                                navigate('congratilation')
+                            }}>
+                                Enviar
+                            </Button>
                         </div>
                     </Form.Submit>
                 </div>

@@ -17,7 +17,7 @@ export function Button({children, asChild, variant = false, ...props}: ButtonPro
             {
                 'bg-blue-800 hover:bg-blue-600 text-slate-100': variant === false,
                 'bg-rose-700 hover:bg-rose-500 text-slate-100': variant === true,
-                'bg-slate-300 hover:bg-slate-200 text-slate-800': asChild,
+                'bg-slate-100 hover:bg-slate-50 text-slate-800': asChild,
             }
         )}>
             {children}

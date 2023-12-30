@@ -11,7 +11,6 @@ import { Home } from "../screens/Home";
 import { Simulate } from "../screens/Simulate";
 import { Congratilation } from "../screens/Congratilation";
 import { Score } from "../screens/Score";
-import { Report } from "../screens/Report";
 
 
 export function Main() {
@@ -23,7 +22,6 @@ export function Main() {
               <Route path="/register" element={<Register/>}/>
               <Route path="/" element={<Home/>}/>
               <Route path="/simulate" element={<><Simulate/> <Outlet/></>}>
-                <Route path="report" element={<Report/>}/> 
                 <Route path="congratilation" element={<Congratilation/>}/>
               </Route>
                 <Route path="/score" element={<Score/>}/>
